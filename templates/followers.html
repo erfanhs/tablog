@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+	{% if followers %}
+		<ul style="list-style-type: none;">
+			{% for follow in followers %}
+				<li>
+					<a href="/{{ follow.follower.username }}/">{{ follow.follower.username }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<h1>0 Followers !</h1>
+	{% endif %}
+{% endblock %}

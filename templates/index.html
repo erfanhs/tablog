@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" href="{% static 'blog/css/posts.css' %}">
+	<h1>Wellcome, {{ user.username }}</h1>
+	<a href="/new-post/">new post</a> | <a href="/logout/">logout</a>
+	<br /><br />
+	<a href="/followers/{{ user.username }}/" style="margin-right: 10px;">{{ user.profile.followers }} followers</a>
+	<a href="/following/{{ user.username }}/" style="margin-left: 10px;">{{ user.profile.following }} following</a>
+	{% if posts %}
+		<div id="posts">
+			{% for post in posts %}
+				<div class="post" onclick="location.href = '/post/{{ post.id }}/';">
+					<img src="{{ post.image.url }}"/>
+					<h2>{{ post.subject }}</h2>
+					<small>{{ post.created_at }}</small>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<h2>You have no posts ! <a href="/new-post/">new post</a></h2>
+	{% endif %}
+{% endblock %}

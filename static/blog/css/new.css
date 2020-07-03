@@ -1,0 +1,12 @@
+textarea {
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+}
+#id_subject {
+	width: 250px;
+	margin-right: 40px;
+}
+label[for="id_image"] {
+	margin-left: 70px;
+}

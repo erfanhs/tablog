@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" href="{% static 'blog/css/posts.css' %}">
+	<h1>{{ user.username }}</h1>
+	<a href="/followers/{{ user.username }}/" style="margin-right: 10px;">{{ user.profile.followers }} followers</a>
+	<a href="/following/{{ user.username }}/" style="margin-left: 10px;">{{ user.profile.following }} following</a>
+	<br /><br />
+	<a href="/switch-follow/{{ user.username }}/">
+		{% if follow %}
+			unfollow
+		{% else %}
+			follow
+		{% endif %}
+	</a>
+	{% if posts %}
+		<div id="posts">
+			{% for post in posts %}
+				<div class="post" onclick="location.href = '/post/{{ post.id }}/';">
+					<img src="{{ post.image.url }}"/>
+					<h2>{{ post.subject }}</h2>
+					<small>{{ post.created_at }}</small>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<h2>No Posts Yet !</h2>
+	{% endif %}
+{% endblock %}

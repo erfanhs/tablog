@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" href="{% static 'blog/css/post.css' %}">
+	<img class="head-image" src="{{ post.image.url }}"/>
+	<h1>{{ post.subject }}</h1>
+	<small>{{ post.created_at }}</small>
+	<p>{{ post.content|linebreaks }}</p>
+	<a href="/switch-like/{{ post.id }}/">
+		{% if like %}
+			unlike
+		{% else %}
+			like
+		{% endif %}
+	</a>
+	<hr color="gray" width="200" />
+	<small>likes: <a href="/likes/{{ post.id }}/">{{ post.likes }}</a></small>
+	<small>total views: {{ post.views }}</small>
+	<br /><br />
+	{% if delete %}
+		<a href="/delete-post/{{ post.id }}/">delete</a>
+	{% endif %}
+{% endblock %}

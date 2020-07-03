@@ -1,0 +1,11 @@
+small {
+	margin-left: 5px;
+}
+.head-image {
+	width: 100%;
+	height: 500px !important;
+}
+p {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}

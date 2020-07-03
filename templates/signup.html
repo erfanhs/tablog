@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<h1>Signup Page</h1>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Signup</button>
+	</form>
+	<br />
+	Have an account? <a href="/login/">login</a>
+{% endblock %}
