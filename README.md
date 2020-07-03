@@ -1,5 +1,5 @@
 # tablog
-A Simple blog app with django.
+A Simple blog application with django.
 
 # how to run
 ```bash
