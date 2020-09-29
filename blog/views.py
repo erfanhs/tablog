@@ -105,9 +105,6 @@ def DelPost(request, postid):
 
 def ShowPost(request, postid):
 	post = get_object_or_404(Post, id=postid)
-	delete = False
-	if request.user == post.author:
-		delete = True
 	try:
 		Like.objects.get(user=request.user, post=post)
 		like = True
@@ -115,7 +112,7 @@ def ShowPost(request, postid):
 		like = False
 	post.views += 1
 	post.save()
-	return render(request, 'post.html', {'post': post, 'like': like, 'delete': delete})
+	return render(request, 'post.html', {'post': post, 'like': like, 'delete': request.user == post.author})
 
 
 
